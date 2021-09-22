@@ -1,3 +1,4 @@
+// default variables for our app
 const User = require('./User');
 const Thought = require('./Thought');
 

@@ -1,4 +1,11 @@
+// using graphQL and graphQL-tools
+
 const { gql } = require('apollo-server-express');
+
+// typeDefs is a GraphQL schema
+// it defines the shape of the data in the graph
+// and the shape of the data that can be queried
+// and the shape of the data that can be mutated
 
 const typeDefs = gql`
   type User {

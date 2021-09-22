@@ -1,3 +1,6 @@
+// Let's make sure we add lots of good comments to our code
+// this is where we will add our user schema
+
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -9,23 +12,27 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
+
     email: {
       type: String,
       required: true,
       unique: true,
       match: [/.+@.+\..+/, 'Must match an email address!']
     },
+
     password: {
       type: String,
       required: true,
       minlength: 5
     },
+
     thoughts: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Thought'
       }
     ],
+
     friends: [
       {
         type: Schema.Types.ObjectId,
@@ -33,6 +40,7 @@ const userSchema = new Schema(
       }
     ]
   },
+
   {
     toJSON: {
       virtuals: true
@@ -40,7 +48,7 @@ const userSchema = new Schema(
   }
 );
 
-// set up pre-save middleware to create password
+// Do a set up to pre-save middleware to create secure password
 userSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
@@ -50,7 +58,7 @@ userSchema.pre('save', async function(next) {
   next();
 });
 
-// compare the incoming password with the hashed password
+// do a comparison to the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };

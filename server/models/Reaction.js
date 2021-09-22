@@ -1,5 +1,9 @@
+//defaults for mongoose and date formatting
+
 const { Schema } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+
+//this is where we set up the schema for the reaction
 
 const reactionSchema = new Schema(
   {
@@ -36,4 +40,6 @@ const reactionSchema = new Schema(
   }
 );
 
+
+//this is where we export the schema
 module.exports = reactionSchema;

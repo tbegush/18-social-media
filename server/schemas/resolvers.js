@@ -1,3 +1,7 @@
+// when should I add a comment?   How obvious is it that I need to add a comment?
+// I like adding comments when I have a good reason to do so.
+
+
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Thought } = require('../models');
 const { signToken } = require('../utils/auth');

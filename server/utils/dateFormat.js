@@ -1,3 +1,6 @@
+//need to format the date to be more readable to a human
+// this will be used to format the date in the post
+
 const addDateSuffix = date => {
   let dateStr = date.toString();
 
@@ -16,6 +19,7 @@ const addDateSuffix = date => {
 
   return dateStr;
 };
+
 
 // function to format a timestamp, accepts the timestamp and an `options` object as parameters
 module.exports = (
@@ -38,6 +42,9 @@ module.exports = (
     11: monthLength === 'short' ? 'Dec' : 'December'
   };
 
+
+  // good comments are appreciated
+  
   const dateObj = new Date(timestamp);
   const formattedMonth = months[dateObj.getMonth()];
 

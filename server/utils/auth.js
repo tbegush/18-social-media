@@ -1,8 +1,13 @@
+//middleware to check if user is logged in
+//if not, redirect to login page
+
 const jwt = require('jsonwebtoken');
 
 const secret = 'SuperSecretSquirrel';
 const expiration = '2h';
 
+// function to check if user is logged in
+  // if not, redirect to login page
 module.exports = {
   authMiddleware: function({ req }) {
     // allows token to be sent via req.body, req.query, or headers

@@ -1,7 +1,13 @@
+//and now for something completely different
+// this is the best way to do it with a server.js file
+
+// using apollo-server-express here because it's a good choice
 const express = require('express');
 const {ApolloServer} = require('apollo-server-express');
 const path = require('path');
 
+
+// more middleware
 const {typeDefs, resolvers} = require('./schemas');
 const {authMiddleware} = require('./utils/auth');
 const db = require('./config/connection');
@@ -14,12 +20,13 @@ const server = new ApolloServer({
   context: authMiddleware 
 });
 
+// this is where we connect to the database
 server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Serve up static assets
+// Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
