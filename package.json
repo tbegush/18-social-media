@@ -1,17 +1,23 @@
 {
-  "name": "18-nosql",
+  "name": "mern-social-media",
   "version": "1.0.0",
-  "private": true,
   "description": "",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.9.7"
+    "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
   }
 }
