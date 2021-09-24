@@ -1,6 +1,6 @@
 //defaults for mongoose and date formatting
 
-const { Schema, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 const mongoose = require('mongoose');
 
@@ -42,5 +42,6 @@ const reactionSchema = new Schema(
 );
 
 
+const Reaction = model('Reaction', reactionSchema);
 //this is where we export the schema
-module.exports = reactionSchema;
+module.exports = {Reaction, reactionSchema};

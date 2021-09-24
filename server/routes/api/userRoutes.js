@@ -42,15 +42,26 @@ router.delete("/:id", (req, res)=> {
         .then(()=> {
           res.json(userResponse)
         })
-      //  res.json(userResponse);
     });
 
 })
 
 router.post("/:userId/friends/:friendId", (req, res)=> {
-
+  User.findOneAndUpdate(
+    { _id: req.params.userId },
+    { $push: { friends: [req.params.friendId] } },
+    { new: true }
+  ).then((friendCreate) => {
+    res.json(friendCreate);
+  });
 })
 router.delete("/:userId/friends/:friendId", (req, res)=> {
-    
+  User.findOneAndUpdate(
+    { _id: req.params.userId },
+    { $pull: { friends: req.params.friendId } },
+    { new: true }
+  ).then((friendCreate) => {
+    res.json(friendCreate);
+  });
 })
 module.exports = router;
