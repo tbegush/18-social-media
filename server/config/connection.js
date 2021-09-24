@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 // this is something else entirely.
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts', //can we change this name? 
+  process.env.MONGODB_URI || 'mongodb://localhost/social-media', 
   //
   {
     useNewUrlParser: true, 

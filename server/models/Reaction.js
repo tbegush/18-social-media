@@ -1,7 +1,8 @@
 //defaults for mongoose and date formatting
 
-const { Schema } = require('mongoose');
+const { Schema, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const mongoose = require('mongoose');
 
 //this is where we set up the schema for the reaction
 
@@ -14,9 +15,9 @@ const reactionSchema = new Schema(
 
 
     reactionId: {
-      type: Int,   //should this be a string?
+      type: Schema.Types.ObjectId,  //ObjectId
       required: true,
-      default: new ObjectId()
+      default: new mongoose.Types.ObjectId()
     },
     reactionBody: {
       type: String,

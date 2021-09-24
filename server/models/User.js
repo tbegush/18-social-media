@@ -20,12 +20,6 @@ const userSchema = new Schema(
       match: [/.+@.+\..+/, 'Must match an email address!']
     },
 
-    password: {
-      type: String,
-      required: true,
-      minlength: 5
-    },
-
     thoughts: [
       {
         type: Schema.Types.ObjectId,
@@ -47,16 +41,6 @@ const userSchema = new Schema(
     }
   }
 );
-
-// Do a set up to pre-save middleware to create secure password
-userSchema.pre('save', async function(next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
-
-  next();
-});
 
 // do a comparison to the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function(password) {
