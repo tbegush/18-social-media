@@ -87,7 +87,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Social-Media-screenshot](/Social-Media-screenshot.png)
+![Video Walkthrough of backend functionality](https://watch.screencastify.com/v/aJjJetYmCO1Bf3eREWFJ)
 
 
 
